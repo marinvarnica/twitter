@@ -36,4 +36,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected static function booted()
+    {
+        parent::booted();
+
+        static::created(fn (User $user) => Profile::create(['id' => $user->id]));
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(Profile::class)->withTimestamps();
+    }
 }
