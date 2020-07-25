@@ -38,22 +38,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected static function booted()
-    {
-        parent::booted();
-
-        static::created(function (User $user){
-            $user->profile()->create();
-        });
-    }
-
-    public function profile()
-    {
-        return $this->hasOne(Profile::class);
-    }
-
     public function following()
     {
-        return $this->belongsToMany(Profile::class)->withTimestamps();
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'following_id');
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'following_id', 'following_id');
     }
 }
