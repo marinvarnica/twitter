@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    dd(auth()->user()->following);
+    dd(auth()->user()->tweetsFromFollowing);
     return view('welcome');
 });
 
