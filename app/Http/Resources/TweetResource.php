@@ -14,10 +14,10 @@ class TweetResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id' => $this->id,
-            'body' => $this->body,
-            'user' => new UserResource($this->user)
-        ];
+       return [
+           'id' => $this->id,
+           'body' => $this->body,
+           'user' => new UserResource($this->user)
+       ];
     }
 }
