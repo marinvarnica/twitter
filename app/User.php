@@ -38,18 +38,34 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function booted()
+    {
+        parent::booted();
+
+        static::created(function (User $user){
+            $user->profile()->create();
+        });
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    public function tweets()
+    {
+        return $this->hasMany(Tweet::class);
+    }
+
     public function following()
     {
-        return $this->belongsToMany(User::class, 'followers', 'user_id', 'following_id');
+        return $this->belongsToMany(Profile::class);
     }
 
-    public function followers()
+    public function tweetsFromFollowing()
     {
-        return $this->belongsToMany(User::class, 'followers', 'following_id', 'user_id');
-    }
+        $users = $this->following()->pluck('profile_id');
 
-    public function TweetsFromFollowing()
-    {
-        return $this->hasManyThrough(Tweet::class, Follower::class, 'user_id', 'user_id', 'id', 'following_id');
+        return Tweet::whereIn('user_id', $users);
     }
 }
