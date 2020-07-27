@@ -47,11 +47,6 @@ class User extends Authenticatable
         });
     }
 
-    public function avatar()
-    {
-        return '/storage/avatars/default.png';
-    }
-
     public function profile()
     {
         return $this->hasOne(Profile::class);
