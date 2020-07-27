@@ -38406,7 +38406,7 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "flex w-full" }, [
-        _c("div", { staticClass: "mr-3" }, [
+        _c("div", { staticClass: "mr-3 w-1/12" }, [
           _c("img", {
             staticClass: "w-12 rounded-full",
             attrs: { src: _vm.tweet.user.avatar }
@@ -38415,6 +38415,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
+          { staticClass: "w-11/12" },
           [
             _c("app-tweet-username", { attrs: { user: _vm.tweet.user } }),
             _vm._v(" "),

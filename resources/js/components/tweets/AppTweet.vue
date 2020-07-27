@@ -1,10 +1,10 @@
 <template>
     <div class="w-full inline-block p-4 border-b border-gray-800 hover:bg-gray-800">
         <div class="flex w-full">
-            <div class="mr-3">
+            <div class="mr-3 w-1/12">
                 <img :src="tweet.user.avatar" class="w-12 rounded-full">
             </div>
-            <div>
+            <div class="w-11/12">
                 <app-tweet-username :user="tweet.user"/>
                 <p class="text-gray-300 whitespace-pre-wrap">{{ tweet.body }}</p>
             </div>
