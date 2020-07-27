@@ -9,9 +9,16 @@ use Illuminate\Http\Request;
 
 class TimelineController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+    }
+
     public function index()
     {
-        $tweets = auth()->user()->tweetsFromFollowing()->paginate(9);
+        $tweets = auth()->user()->tweetsFromFollowing()
+            ->latest()
+            ->paginate(9);
         return new TweetCollection($tweets);
     }
 }
