@@ -11,7 +11,7 @@ class TimelineController extends Controller
 {
     public function index()
     {
-        $tweets = auth()->user()->tweetsFromFollowing()->paginate(5);
+        $tweets = auth()->user()->tweetsFromFollowing()->paginate(9);
         return new TweetCollection($tweets);
     }
 }
