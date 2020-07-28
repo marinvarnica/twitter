@@ -17,4 +17,9 @@ class Profile extends Model
     {
         return '/storage/avatars/default.png';
     }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
