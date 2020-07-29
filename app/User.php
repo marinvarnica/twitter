@@ -73,4 +73,9 @@ class User extends Authenticatable
 
         return Tweet::whereIn('user_id', $users);
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }

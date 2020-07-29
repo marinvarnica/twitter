@@ -21,3 +21,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/timeline1', 'Api\Timeline\TimelineController@index');
