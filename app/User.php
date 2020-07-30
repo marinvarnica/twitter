@@ -78,4 +78,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Like::class);
     }
+
+    public function hasLike(Tweet $tweet)
+    {
+        return $this->likes->contains('tweet_id', $tweet->id);
+    }
 }
