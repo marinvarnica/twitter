@@ -50,17 +50,12 @@
                 deleteTweet: 'likes/deleteTweet',
             }),
 
-            liking (){
-                this.likeToggling(this.tweet)
-            },
-
             likeOrUnlike () {
                 if (this.liked)
                 {
                     this.deleteTweet(this.tweet)
                     return
                 }
-
                 this.likeTweet(this.tweet)
             }
         }
